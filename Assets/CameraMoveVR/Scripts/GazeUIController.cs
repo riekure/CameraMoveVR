@@ -7,6 +7,7 @@ public class GazeUIController : MonoBehaviour
     public GameObject mainCamera;
     // 視点UIの対象パネル
     public GameObject modePlane_1;
+    public GameObject modePlane_2;
 
     // 対象ボタンの色 0:通常/1:ヒット
     public Material[] _materials;
@@ -37,12 +38,18 @@ public class GazeUIController : MonoBehaviour
                     // ヒットの色
                     modePlane_1.GetComponent<Renderer>().material = _materials[1];
                 }
+
+                if (hit.collider.gameObject == modePlane_2)
+                {
+                    modePlane_2.GetComponent<Renderer>().material = _materials[1];
+                }
             }
-            else
-            {
-                // 通常の色
-                modePlane_1.GetComponent<Renderer>().material = _materials[0];
-            }
+        }
+        else
+        {
+            // 通常の色
+            modePlane_1.GetComponent<Renderer>().material = _materials[0];
+            modePlane_2.GetComponent<Renderer>().material = _materials[0];
         }
     }
 }
